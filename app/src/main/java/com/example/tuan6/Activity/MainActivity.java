@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.tuan6.DatabaseHandler;
 import com.example.tuan6.Model.NotesModel;
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         listView = findViewById(R.id.listView1);
         arrayList = new ArrayList<>();
         adapter = new NotesAdapter(this, R.layout.row_item, arrayList);
@@ -49,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         InitDatabaseSQLite();
-
         if (!isDatabasePopulated()) {
             createDatabaseSQLite();
         }
